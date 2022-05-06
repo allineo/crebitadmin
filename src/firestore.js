@@ -24,4 +24,4 @@ async function getUsers(db) {
     return usersList;
   }
 
-  getUsers(db);
+  //getUsers(db);

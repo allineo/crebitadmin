@@ -18,12 +18,23 @@ function FixUserLink(props) {
     //let user = firebase.queryByPhone(client, phone);
     const link = baselink; // + user['id'];  //Gdv69bPuYqwa54Q6p9PD  //user['nome'];
     const message = <div>
-        <br />
-        Usuário ID: <br />
-        Nome: <br />
-        Whatsapp: {props.phone}
+        Usuário ID: (Falta buscar esses dados do Firestore) <br />
+        Nome: (Arjan precisa digitar o nome no Firestore) <br />
+        Whatsapp: {props.phone} <br />
         <br />
         Link: <a href={link} target='_blank'>Valide os dados aqui </a>
+
+        <br /> <br /> <br />
+
+        Gerar na Liveon os Steps  <br />
+         - Step 0 (CPF) e retornar o individual ID (cadastrar o LiveonID no Firebase) <br />
+         - Step 1 (Email) <br />
+         - Step 2 (Phone) <br />
+         - Step 3 (Address) <br />
+         - Step 4 (Profession) (automatico) <br />
+
+         <br /><br />
+         - Step 5 (Document info) (Fazer um form para o Arjan inserir direto na Liveon) <br />
     </div>
     return message;
 }
@@ -34,10 +45,12 @@ function LinksPostman(props) {
     const selfie = 'https://web.postman.co/workspace/LiveOn~98ee052e-4a64-48bd-86f9-fb9481ca3998/request/2030980-cbce10e6-2e11-4239-924e-9ed2e496910b';
 
     const message = <div>
-        <br />
-        Upload do <a href={rg} target='_blank' rel="noreferrer" >RG/CNH</a><br /><br />
-        Upload da <a href={sign} target='_blank' rel="noreferrer" >Assinatura</a><br /><br />
-        Upload da <a href={selfie} target='_blank' rel="noreferrer" >Selfie</a><br /><br />
+        - Step 6 - Upload do <a href={rg} target='_blank' rel="noreferrer" >RG/CNH</a><br /><br />
+        - Step 7 - Upload da <a href={sign} target='_blank' rel="noreferrer" >Assinatura</a><br /><br />
+        - Step 8 - Upload da <a href={selfie} target='_blank' rel="noreferrer" >Selfie</a><br /><br />
+
+        <br /> 
+        - Step 9 (Password da liveon) (automatico)
     </div>
     return message;
 }
