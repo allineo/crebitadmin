@@ -1,4 +1,4 @@
-const liveon = require('./liveonIndividual.js');
+const liveon = require('./liveonadmin.js');
 const firebasedb = require('./firebase.js');
 
 
