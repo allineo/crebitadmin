@@ -1,17 +1,19 @@
 import './App.css';
-import { getUsers }  from './firestore';
+import { getUser }  from './firestore';
 import HomeContent from './home';
 
 function App() {
 
   const client = 'RR4X';
   let phone = getUrlParameter('p');
+  let cpf = getUrlParameter('cpf');
 
-  //getUsers();
+  let userid = getUser(cpf);
+  console.log('userid ' + userid);
 
   return (<div>
     <b>PORTAL ADMINISTRATIVO</b> <br /><br /><br />
-    <HomeContent client={client} phone={phone} />
+    <HomeContent client={client} phone={phone} cpf={cpf} />
   </div>);
 }
 
