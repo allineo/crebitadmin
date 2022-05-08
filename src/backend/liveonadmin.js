@@ -21,15 +21,15 @@ exports.getIndividuo = async function (cpf) {
             'Authorization': 'Basic ' + liveonCredentials['Authorization']
         }
         const data = JSON.stringify({});
-        const resp = await axios.get(url, data, {
+        const resp = await axios.get(url, {
             headers: headers
         })
             .then(function (response) {
                 console.log(response);
-                return response.data;
+                return response;
             })
             .catch(function (error) {
-                console.log('error.response.data: ' + JSON.stringify(error.response.data));
+               // console.log('error.response.data: ' + JSON.stringify(error.response.data));
                 console.log('error.config: ' + JSON.stringify(error.config));
                 //console.log(error);
             });
