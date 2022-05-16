@@ -115,7 +115,7 @@ async function createIndividual(cpf) {
                 .then(response => response.json())
                 .then(result => {
                     console.log(result);
-                    document.getElementById('resposta').innerHTML("resposta: " + result);
+                    document.getElementById('resposta').innerHTML = "resposta: " + result;
                 })
                 .catch(error => console.log('error', error));
         })
@@ -129,7 +129,7 @@ async function createIndividual(cpf) {
 
 
 export const getIndividuo = async function (cpf) {
-    document.getElementById('resposta').innerHTML("resposta: processando... ");
+    document.getElementById('resposta').innerHTML = "resposta: processando... ";
 
     /*const urlAuth = liveonCredentials['urlProxy'] + "/auth";
     var requestOptions = getTokenRequestOptions();
@@ -142,7 +142,9 @@ export const getIndividuo = async function (cpf) {
             var header = {
                 'Content-Type': 'application/json',
                 'Subscription-key': liveonCredentials['subscriptionKey'],
-                'Authorization': 'Basic ' + liveonCredentials['Authorization'] 
+                'Authorization': 'Basic ' + liveonCredentials['Authorization'] ,
+                'Access-Control-Allow-Origin': '*',
+                'mode': 'no-cors'
             };
             var data = JSON.stringify({ });
             var requestOptions = {
@@ -155,7 +157,7 @@ export const getIndividuo = async function (cpf) {
                 .then(response => response.json())
                 .then(result => {
                     console.log(result);
-                    document.getElementById('resposta').innerHTML("resposta: " + result);
+                    document.getElementById('resposta').innerHTML = "resposta: " + result;
                 })
                 .catch(error => console.log('error', error));
     /*    })
