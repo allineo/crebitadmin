@@ -1,6 +1,9 @@
 import { createCPFIndividuo,  sendDocInfo } from './liveonIndividual';
 
 
+//    /usr/share/nginx/html
+//  /home/alline
+
 function HomeContent(props) {
     return (<div>
         <FixUserLink props={props} />

@@ -44,19 +44,20 @@ function getToken() {
 
 
 export const createCPFIndividuo = async function (cpf) {
+    let liveonid = '';
     //let user = await firebasedb.queryByCPF(client, cpf);
     try {
         console.log('createCPFIndividuo: ' + cpf);
         // firebasedb.update(user);
-        let liveonid = ''; //user['liveon']['individual_id'];
+        liveonid = ''; //user['liveon']['individual_id'];
         if (cpf !== undefined && cpf !== '' && liveonid === '') {
-            //liveonid = await createIndividual(cpf);
+            liveonid = await createIndividual(cpf);
         }
         console.log(liveonid);
     } catch (_error) {
         console.log(_error);
     }
-    //return user;
+    return liveonid;
 }
 
 
@@ -113,7 +114,8 @@ async function createIndividual(cpf) {
             fetch(urlRegisterIndivuduo, requestOptions)
                 .then(response => response.json())
                 .then(result => {
-                    console.log(result)
+                    console.log(result);
+                    document.getElementById('resposta').innerHTML("resposta: " + result);
                 })
                 .catch(error => console.log('error', error));
         })
