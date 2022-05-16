@@ -20,8 +20,7 @@ function getTokenRequestOptions() {
     var header = {
         //'Subscription-key': subscriptionkey,
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'mode': 'no-cors'
+        'Access-Control-Allow-Origin': '*'
     };
     var data = JSON.stringify({
         "document": "65904249187",
@@ -103,8 +102,7 @@ async function createIndividual(cpf) {
             var header = {
                 'Content-Type': 'application/json',
                 'Subscription-key': liveonCredentials['subscriptionKey'],
-                'Access-Control-Allow-Origin': '*',
-                'mode': 'no-cors'
+             //   'Access-Control-Allow-Origin': '*'
             };
             var data = JSON.stringify({
                 "document": cpf
@@ -147,8 +145,7 @@ export const getIndividuo = async function (cpf) {
                 'Content-Type': 'application/json',
                 'Subscription-key': liveonCredentials['subscriptionKey'],
                 'Authorization': 'Basic ' + liveonCredentials['Authorization'] ,
-                'Access-Control-Allow-Origin': '*',
-                'mode': 'no-cors'
+                'Access-Control-Allow-Origin': '*'
             };
             var data = JSON.stringify({ });
             var requestOptions = {
