@@ -20,6 +20,8 @@ function getTokenRequestOptions() {
     var header = {
         //'Subscription-key': subscriptionkey,
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'mode': 'no-cors'
     };
     var data = JSON.stringify({
         "document": "65904249187",
@@ -100,7 +102,9 @@ async function createIndividual(cpf) {
             const urlRegisterIndivuduo = liveonCredentials['urlProxy'] + '/v2/register/individual';
             var header = {
                 'Content-Type': 'application/json',
-                'Subscription-key': liveonCredentials['subscriptionKey']
+                'Subscription-key': liveonCredentials['subscriptionKey'],
+                'Access-Control-Allow-Origin': '*',
+                'mode': 'no-cors'
             };
             var data = JSON.stringify({
                 "document": cpf
@@ -150,7 +154,7 @@ export const getIndividuo = async function (cpf) {
             var requestOptions = {
                 method: 'GET',
                 headers: header,
-                body: data,
+                //body: data,
                 redirect: 'follow'
             };
             fetch(urlRegisterIndivuduo, requestOptions)

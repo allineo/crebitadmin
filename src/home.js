@@ -51,7 +51,6 @@ function FixUserLink(props) {
                 VER INDIVIDUO LIVEON
             </button>
         </div>
-        <br /><br />
     </div>
     return message;
 }
