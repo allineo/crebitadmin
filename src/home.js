@@ -1,4 +1,4 @@
-import { createCPFIndividuo,  sendDocInfo } from './liveonIndividual';
+import { createCPFIndividuo, getIndividuo, sendDocInfo } from './liveonIndividual';
 
 
 //    /usr/share/nginx/html
@@ -11,7 +11,10 @@ function HomeContent(props) {
         <LinksPostman props={props} />
         <br /><br /><br />
         <hr></hr>
-        <div id='resposta'></div>
+        <br />
+        Respostas:
+        <br /><br />
+        <div id='resposta'>aqui</div>
     </div>);
 }
 
@@ -28,7 +31,7 @@ function FixUserLink(props) {
         CPF: (Arjan precisa conferir no Firestore de acordo com o documento) <br />
         Whatsapp: {props.phone} <br />
         <br />
-        Link: <a href={link} target='_blank'  rel="noreferrer">Valide os dados aqui </a>
+        Link: <a href={link} target='_blank' rel="noreferrer">Valide os dados aqui </a>
         <br />
         (Fazer esse link abrir direto o id do usuario)
 
@@ -41,8 +44,14 @@ function FixUserLink(props) {
         - Step 3 (Address) <br />
         - Step 4 (Profession) (automatico) <br />
         <br />
-        <ButtonCreateIndividuo cpf={props.props.cpf} /><br /><br />
-        (Mostrar os steps ID da Liveon pro Arjan)
+        <ButtonCreateIndividuo cpf={props.props.cpf} />
+        <br /><br />
+        <div>
+            <button onClick={() => getIndividuo(props.cpf)}>
+                VER INDIVIDUO LIVEON
+            </button>
+        </div>
+        <br /><br />
     </div>
     return message;
 }
@@ -67,7 +76,7 @@ function LinksPostman(props) {
         <br />
         - Step 5 (Document info) (Fazer um form para o Arjan inserir direto na Liveon) <br />
         <br />
-        <button onClick={() =>  sendDocInfo(props.cpf)}>
+        <button onClick={() => sendDocInfo(props.cpf)}>
             Enviar DOCS INFOS
         </button>
         <br /><br />

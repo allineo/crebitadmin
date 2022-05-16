@@ -128,8 +128,9 @@ async function createIndividual(cpf) {
 
 
 
-async function getIndividuo(cpf) {
-  
+export const getIndividuo = async function (cpf) {
+    document.getElementById('resposta').innerHTML("resposta: processando... ");
+
     /*const urlAuth = liveonCredentials['urlProxy'] + "/auth";
     var requestOptions = getTokenRequestOptions();
     fetch(urlAuth, requestOptions)
@@ -153,7 +154,8 @@ async function getIndividuo(cpf) {
             fetch(urlRegisterIndivuduo, requestOptions)
                 .then(response => response.json())
                 .then(result => {
-                    console.log(result)
+                    console.log(result);
+                    document.getElementById('resposta').innerHTML("resposta: " + result);
                 })
                 .catch(error => console.log('error', error));
     /*    })
