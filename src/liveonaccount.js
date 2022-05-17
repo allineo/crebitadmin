@@ -40,7 +40,6 @@ function getToken(cpf) {
 
 
 export const getAccountInfo = async function (cpf) {
-    console.log(cpf);
     const token = await getToken(cpf);
     console.log(token);
     document.getElementById('resposta').innerHTML = JSON.stringify(token);
