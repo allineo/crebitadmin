@@ -9,13 +9,14 @@ let liveonCredentials = {
 };
 
 
-function getTokenRequestOptions() {
+function getTokenRequestOptions(cpf,access) {
     var header = {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Subscription-key': liveonCredentials['subscriptionKey']
     };
-    var data = JSON.stringify({
-        "document": "65904249187",
-        "password": "001248"
+    const data = JSON.stringify({
+        "document": cpf,
+        "password": access
     });
     var requestOptions = {
         method: 'POST',
@@ -26,13 +27,19 @@ function getTokenRequestOptions() {
     return requestOptions;
 }
 
-function getToken() {
-    var requestOptions = getTokenRequestOptions()
+function getToken(cpf, access) {
+    var requestOptions = getTokenRequestOptions(cpf, access);
     fetch(liveonCredentials['urlProxy'] + "/auth", requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
 }
+
+
+
+async function getAdminToken() {
+        const url = liveonCredentials['url'] + '/admin/auth';
+    }
 
 
 export const changeAccessIndividuo = async function () {
