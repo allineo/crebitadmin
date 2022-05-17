@@ -117,7 +117,7 @@ async function createIndividual(cpf) {
                 .then(response => response.json())
                 .then(result => {
                     console.log(result);
-                    document.getElementById('resposta').innerHTML = result;
+                    document.getElementById('resposta').innerHTML = JSON.stringify(result);
                 })
                 .catch(error => console.log('error', error));
        // })
@@ -158,7 +158,7 @@ export const getIndividuo = async function (cpf) {
                 .then(response => response.json())
                 .then(result => {
                     console.log(result);
-                    document.getElementById('resposta').innerHTML = result;
+                    document.getElementById('resposta').innerHTML = JSON.stringify(result);
                 })
                 .catch(error => console.log('error', error));
     /*    })
