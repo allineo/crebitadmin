@@ -1,6 +1,7 @@
 import './App.css';
-import { getUser }  from './firestore';
+import { getUser } from './firestore';
 import HomeContent from './home';
+import AdminContent from './adminpane';
 
 function App() {
 
@@ -12,9 +13,15 @@ function App() {
   console.log('userid ' + userid);
 
   return (<div>
-    <b>PORTAL ADMINISTRATIVO</b> <br /><br /><br />
-    <HomeContent client={client} phone={phone} cpf={cpf} />
-  </div>);
+    <div className='leftPane'>
+      <b>PORTAL ADMINISTRATIVO</b> <br /><br /><br />
+      <HomeContent client={client} phone={phone} cpf={cpf} />
+    </div>
+    <div className='rightPane'>
+      <AdminContent client={client} phone={phone} cpf={cpf} />
+    </div>
+  </div>
+  );
 }
 
 export default App;

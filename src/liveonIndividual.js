@@ -1,10 +1,4 @@
 
-//BASE URL: https://lotus-prod-apim.baas.solutions/crebit
-// Documentação da API: https://live-on-solutions.readme.io/reference#overview
-// Collection Postman: https://www.getpostman.com/collections/fe186c20177c57fb8041
-
-// https://live-on-solutions.readme.io/reference#overview
-// https://www.getpostman.com/collections/8642d8b8301dd4bbdd2d
 
 let liveonCredentials = {
     "urlProxy": 'https://proxy.apps.binnovation.co/crebit',
@@ -16,11 +10,8 @@ let liveonCredentials = {
 
 
 function getTokenRequestOptions() {
-    //const subscriptionkey = "2155da3459254e008a0484705a96d5d9";
     var header = {
-        //'Subscription-key': subscriptionkey,
-        'Content-Type': 'application/json',
-    //    'Access-Control-Allow-Origin': '*'
+        'Content-Type': 'application/json'
     };
     var data = JSON.stringify({
         "document": "65904249187",
@@ -45,83 +36,27 @@ function getToken() {
 
 
 export const createCPFIndividuo = async function (cpf) {
-    let liveonid = '';
-    //let user = await firebasedb.queryByCPF(client, cpf);
-    try {
-        console.log('createCPFIndividuo: ' + cpf);
-        // firebasedb.update(user);
-        liveonid = ''; //user['liveon']['individual_id'];
-        if (cpf !== undefined && cpf !== '' && liveonid === '') {
-            liveonid = await createIndividual(cpf);
-        }
-        console.log(liveonid);
-    } catch (_error) {
-        console.log(_error);
-    }
-    return liveonid;
-}
-
-
-async function createIndividual(cpf) {
-    /* if (cpf !== '') {
-         try {
-             const url = liveonCredentials['urlProxy'] + '/v2/register/individual';
-             const headers = {
-                 'Content-Type': 'application/json',
-                 'Subscription-key': liveonCredentials['subscriptionKey']
-             }
-             const data = JSON.stringify({
-                 "document": cpf
-             });
-             const resp = await axios.post(url, data, {
-                 headers: headers
-             })
-                 .then(function (response) {
-                     return response.data;
-                 })
-                 .catch(function (error) {
-                     console.log('error.response.data: ' + JSON.stringify(error.response.data));
-                     console.log('error.config: ' + JSON.stringify(error.config));
-                     //console.log(error);
-                 });
-             return resp["individual_id"];
-         } catch (_error) {
-             console.log("createIndividual " + _error);
-         }
-     }*/
-
-
-    /*const urlAuth = liveonCredentials['urlProxy'] + "/auth";
-    var requestOptions = getTokenRequestOptions();
-    fetch(urlAuth, requestOptions)
+    const urlRegisterIndivuduo = liveonCredentials['urlProxy'] + '/v2/register/individual';
+    var header = {
+        'Content-Type': 'application/json',
+        'Subscription-key': liveonCredentials['subscriptionKey']
+    };
+    var data = JSON.stringify({
+        "document": cpf
+    });
+    var requestOptions = {
+        method: 'POST',
+        headers: header,
+        body: data,
+        redirect: 'follow'
+    };
+    fetch(urlRegisterIndivuduo, requestOptions)
         .then(response => response.json())
         .then(result => {
             console.log(result);
-            let token = result.token;*/
-            const urlRegisterIndivuduo = liveonCredentials['urlProxy'] + '/v2/register/individual';
-            var header = {
-                'Content-Type': 'application/json',
-                'Subscription-key': liveonCredentials['subscriptionKey'],
-             //   'Access-Control-Allow-Origin': '*'
-            };
-            var data = JSON.stringify({
-                "document": cpf
-            });
-            var requestOptions = {
-                method: 'POST',
-                headers: header,
-                body: data,
-                redirect: 'follow'
-            };
-            fetch(urlRegisterIndivuduo, requestOptions)
-                .then(response => response.json())
-                .then(result => {
-                    console.log(result);
-                    document.getElementById('resposta').innerHTML = JSON.stringify(result);
-                })
-                .catch(error => console.log('error', error));
-       // })
-    //    .catch(error => console.log('error', error));
+            document.getElementById('resposta').innerHTML = JSON.stringify(result);
+        })
+        .catch(error => console.log('error', error));
 }
 /* { "success": true,
 #    "individual_id": "614220bf011fb90050503717",
@@ -133,92 +68,74 @@ async function createIndividual(cpf) {
 export const getIndividuo = async function (cpf) {
     document.getElementById('resposta').innerHTML = "resposta: processando... ";
 
-    /*const urlAuth = liveonCredentials['urlProxy'] + "/auth";
-    var requestOptions = getTokenRequestOptions();
-    fetch(urlAuth, requestOptions)
+    const urlRegisterIndivuduo = liveonCredentials['urlProxy'] + '/v2/individual/' + cpf;
+    var header = {
+        'Content-Type': 'application/json',
+        'Subscription-key': liveonCredentials['subscriptionKey'],
+        'Authorization': 'Basic ' + liveonCredentials['Authorization'],
+        //   'Access-Control-Allow-Origin': '*'
+    };
+    var data = JSON.stringify({});
+    var requestOptions = {
+        method: 'GET',
+        headers: header,
+        //body: data,
+        redirect: 'follow'
+    };
+    fetch(urlRegisterIndivuduo, requestOptions)
         .then(response => response.json())
         .then(result => {
-            //console.log(result);
-            let token = result.token;*/
-            const urlRegisterIndivuduo = liveonCredentials['urlProxy'] + '/v2/individual/' + cpf;
-            var header = {
-                'Content-Type': 'application/json',
-                'Subscription-key': liveonCredentials['subscriptionKey'],
-                'Authorization': 'Basic ' + liveonCredentials['Authorization'] ,
-             //   'Access-Control-Allow-Origin': '*'
-            };
-            var data = JSON.stringify({ });
-            var requestOptions = {
-                method: 'GET',
-                headers: header,
-                //body: data,
-                redirect: 'follow'
-            };
-            fetch(urlRegisterIndivuduo, requestOptions)
-                .then(response => response.json())
-                .then(result => {
-                    console.log(result);
-                    document.getElementById('resposta').innerHTML = JSON.stringify(result);
-                })
-                .catch(error => console.log('error', error));
-    /*    })
-        .catch(error => console.log('error', error));*/
+            console.log(result);
+            document.getElementById('resposta').innerHTML = JSON.stringify(result);
+        })
+        .catch(error => console.log('error', error));
 }
 
 
 
 export const sendDocInfo = async function (cpf) {
- /*   const urlAuth = liveonCredentials['urlProxy'] + "/auth";
-    var requestOptions = getTokenRequestOptions();
-    fetch(urlAuth, requestOptions)
+    const urlDocInfo = liveonCredentials['urlProxy'] + '/v2/register/individual/step5';
+    var header = {
+        'Content-Type': 'application/json',
+        'Subscription-key': liveonCredentials['subscriptionKey']
+        //  'Authorization': 'Basic ' + getEnv('liveon')['Authorization'] 
+    };
+
+    const id = "6275cc3287891600637d573e";
+    const rg = "262677698";
+    const uf = "RJ";
+    const emissao = "2018-04-18";
+    const nome = "Izlan Santos de Souza";
+    const mae = "Solange Santos de Souza";
+    const nascimento = "1991-11-04";
+    const gender = "M";
+
+    var data = JSON.stringify({
+        "individual_id": id,
+        "document_number": rg,
+        "document_state": uf,
+        "issuance_date": emissao,
+        "document_name": nome,
+        "mother_name": mae,
+        "gender": gender,
+        "birth_date": nascimento,
+        "marital_status": "Solteiro (a)",
+        "nationality": "Brasileiro",
+        "pep": true,
+        "pep_since": "2000-05-05"
+    });
+    var requestOptions = {
+        method: 'POST',
+        headers: header,
+        body: data,
+        redirect: 'follow'
+    };
+    fetch(urlDocInfo, requestOptions)
         .then(response => response.json())
         .then(result => {
-            //console.log(result);
-            let token = result.token;*/
-            const urlDocInfo = liveonCredentials['urlProxy'] + '/v2/register/individual/step5';
-            var header = {
-                'Content-Type': 'application/json',
-                'Subscription-key': liveonCredentials['subscriptionKey']
-                //  'Authorization': 'Basic ' + getEnv('liveon')['Authorization'] 
-            };      
-
-            const id = "6275cc3287891600637d573e";
-            const rg = "262677698";
-            const uf = "RJ";
-            const emissao = "2018-04-18";
-            const nome = "Izlan Santos de Souza";
-            const mae = "Solange Santos de Souza";
-            const nascimento = "1991-11-04";
-            const gender = "M";
-
-            var data = JSON.stringify({
-                "individual_id": id ,
-                "document_number": rg,
-                "document_state": uf,
-                "issuance_date": emissao,
-                "document_name": nome,
-                "mother_name": mae,
-                "gender": gender,
-                "birth_date": nascimento,
-                "marital_status": "Solteiro (a)",
-                "nationality": "Brasileiro",
-                "pep": true,
-                "pep_since": "2000-05-05"
-            });
-            var requestOptions = {
-                method: 'POST',
-                headers: header,
-                body: data,
-                redirect: 'follow'
-            };
-            fetch(urlDocInfo, requestOptions)
-                .then(response => response.json())
-                .then(result => {
-                    console.log(result);
-                })
-                .catch(error => console.log('error', error));
-       /* })
-        .catch(error => console.log('error', error));*/
+            console.log(result);
+        })
+        .catch(error => console.log('error', error));
 }
 
 

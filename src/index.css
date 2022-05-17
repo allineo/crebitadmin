@@ -1,0 +1,15 @@
+
+.leftPane {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    border-right: solid;
+    margin-left: 3%;
+}
+
+
+.rightPane {
+    width: 30%;
+    height: 100%;
+    margin-left: 60%;
+}
