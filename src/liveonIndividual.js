@@ -20,7 +20,7 @@ function getTokenRequestOptions() {
     var header = {
         //'Subscription-key': subscriptionkey,
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+    //    'Access-Control-Allow-Origin': '*'
     };
     var data = JSON.stringify({
         "document": "65904249187",
@@ -91,13 +91,13 @@ async function createIndividual(cpf) {
      }*/
 
 
-    const urlAuth = liveonCredentials['urlProxy'] + "/auth";
+    /*const urlAuth = liveonCredentials['urlProxy'] + "/auth";
     var requestOptions = getTokenRequestOptions();
     fetch(urlAuth, requestOptions)
         .then(response => response.json())
         .then(result => {
-            //console.log(result);
-            let token = result.token;
+            console.log(result);
+            let token = result.token;*/
             const urlRegisterIndivuduo = liveonCredentials['urlProxy'] + '/v2/register/individual';
             var header = {
                 'Content-Type': 'application/json',
@@ -120,8 +120,8 @@ async function createIndividual(cpf) {
                     document.getElementById('resposta').innerHTML = "resposta: " + result;
                 })
                 .catch(error => console.log('error', error));
-        })
-        .catch(error => console.log('error', error));
+       // })
+    //    .catch(error => console.log('error', error));
 }
 /* { "success": true,
 #    "individual_id": "614220bf011fb90050503717",
@@ -145,7 +145,7 @@ export const getIndividuo = async function (cpf) {
                 'Content-Type': 'application/json',
                 'Subscription-key': liveonCredentials['subscriptionKey'],
                 'Authorization': 'Basic ' + liveonCredentials['Authorization'] ,
-                'Access-Control-Allow-Origin': '*'
+             //   'Access-Control-Allow-Origin': '*'
             };
             var data = JSON.stringify({ });
             var requestOptions = {

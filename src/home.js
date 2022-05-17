@@ -3,6 +3,7 @@ import { createCPFIndividuo, getIndividuo, sendDocInfo } from './liveonIndividua
 
 //    /usr/share/nginx/html
 //  /home/alline
+//https://proxy.apps.binnovation.co/?cpf=65904249187
 
 function HomeContent(props) {
     return (<div>
@@ -47,7 +48,7 @@ function FixUserLink(props) {
         <ButtonCreateIndividuo cpf={props.props.cpf} />
         <br /><br />
         <div>
-            <button onClick={() => getIndividuo(props.cpf)}>
+            <button onClick={() => getIndividuo(props.props.cpf)}>
                 VER INDIVIDUO LIVEON
             </button>
         </div>
