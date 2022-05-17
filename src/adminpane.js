@@ -1,11 +1,11 @@
-import { changeAccessIndividuo } from './liveonadministrator';
-
+//import { changeAccessIndividuo } from './liveonadministrator';
+import { getAccountInfo } from './liveonaccount';
 
 
 function AdminContent(props) {
     return (<div>
-        <button onClick={() => changeAccessIndividuo(props.cpf)}>
-            TESTE
+        <button onClick={() => getAccountInfo(props.cpf)}>
+            ALIAS DA CONTA
         </button>
         <br /><br /><br />
         
