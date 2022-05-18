@@ -13,11 +13,14 @@ function App() {
   console.log('userid ' + userid);
 
   return (<div>
+    <br /><center><b>PORTAL ADMINISTRATIVO</b></center>
+    <br /><br />
     <div className='leftPane'>
-      <b>PORTAL ADMINISTRATIVO</b> <br /><br /><br />
+      <br /><center><b>ONBOARDING</b></center>
       <HomeContent client={client} phone={phone} cpf={cpf} />
     </div>
     <div className='rightPane'>
+      <br /><center><b>MANUTENÇÃO</b></center>
       <AdminContent client={client} phone={phone} cpf={cpf} />
     </div>
   </div>

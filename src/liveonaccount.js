@@ -45,7 +45,7 @@ exports.getAccountInfo =  function (cpf) {
     const urlAuth = "https://proxy.apps.binnovation.co/crebit/auth";
     var requestOptions = getTokenRequestOptions();
     fetch(urlAuth, requestOptions)
-        .then(response => response.json())
+        .then(response => response.text())
         .then(result => {
             console.log(result);
             let token = result.token;
