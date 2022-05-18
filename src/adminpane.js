@@ -5,14 +5,8 @@ import { getAccountInfo } from './liveonaccount';
 function AdminContent(props) {
     return (<div>
         <button onClick={() => getAccountInfo(props.cpf)}>
-            ALIAS DA CONTA
+            ALIAS DA CONTA de CPF = {props.cpf}
         </button>
-        <br /><br /><br />
-        
-        <br />
-        Resposta:
-        <br /><br />
-        <div id='respostaAdmin'>aqui</div>
     </div>);
 }
 

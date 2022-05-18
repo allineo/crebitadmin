@@ -11,11 +11,6 @@ function HomeContent(props) {
         <br /><br /><br />
         <LinksPostman props={props} />
         <br /><br /><br />
-        <hr></hr>
-        <br />
-        Respostas:
-        <br /><br />
-        <div id='resposta'>aqui</div>
     </div>);
 }
 
@@ -59,7 +54,7 @@ function FixUserLink(props) {
 function ButtonCreateIndividuo(props) {
     return (<div>
         <button onClick={() => createCPFIndividuo(props.cpf)}>
-            CRIAR INDIVIDUO LIVEON
+            CRIAR INDIVIDUO LIVEON<br /><b>CPF = {props.cpf}</b>
         </button>
     </div>);
 }

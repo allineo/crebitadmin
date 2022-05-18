@@ -36,10 +36,11 @@ function getToken() {
 
 
 export const createCPFIndividuo = async function (cpf) {
+    document.getElementById('resposta').innerHTML = 'Criando individuo na Liveon para CPF = ' + cpf;
     const urlRegisterIndivuduo = liveonCredentials['urlProxy'] + '/v2/register/individual';
     var header = {
         'Content-Type': 'application/json',
-        'Subscription-key': liveonCredentials['subscriptionKey']
+       // 'Subscription-key': liveonCredentials['subscriptionKey']
     };
     var data = JSON.stringify({
         "document": cpf
@@ -54,7 +55,9 @@ export const createCPFIndividuo = async function (cpf) {
         .then(response => response.json())
         .then(result => {
             console.log(result);
-            document.getElementById('resposta').innerHTML = JSON.stringify(result);
+            document.getElementById('resposta').innerHTML =
+                'Individuo Liveon criado para CPF = ' + cpf + '<br /><br />' +
+                JSON.stringify(result);
         })
         .catch(error => console.log('error', error));
 }

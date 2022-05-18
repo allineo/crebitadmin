@@ -13,15 +13,21 @@ function App() {
   console.log('userid ' + userid);
 
   return (<div>
-    <br /><center><b>PORTAL ADMINISTRATIVO</b></center>
-    <br /><br />
+    <center><b>PORTAL ADMINISTRATIVO</b></center>
+    <br />
     <div className='leftPane'>
-      <br /><center><b>ONBOARDING</b></center>
+      <br /><center><b>ONBOARDING</b></center><br />
       <HomeContent client={client} phone={phone} cpf={cpf} />
     </div>
     <div className='rightPane'>
-      <br /><center><b>MANUTENÇÃO</b></center>
+      <br /><center><b>MANUTENÇÃO</b></center><br />
       <AdminContent client={client} phone={phone} cpf={cpf} />
+      <br />
+      <hr></hr>
+      <br />
+        Resposta:
+        <br /><br />
+        <div id='resposta'>aqui</div>
     </div>
   </div>
   );
