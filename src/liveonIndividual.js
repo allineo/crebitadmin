@@ -57,7 +57,7 @@ export const createCPFIndividuo = async function (cpf) {
             console.log(result);
             document.getElementById('resposta').innerHTML =
                 'Individuo Liveon criado para CPF = ' + cpf + '<br /><br />' +
-                text + 
+                result + 
                 JSON.stringify(result);
         })
         .catch(error => console.log('error', error));
