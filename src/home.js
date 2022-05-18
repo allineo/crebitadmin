@@ -44,7 +44,7 @@ function FixUserLink(props) {
         <br /><br />
         <div>
             <button onClick={() => getIndividuo(props.props.cpf)}>
-                VER INDIVIDUO LIVEON
+                VER INDIVIDUO LIVEON<br /><b>CPF = {props.props.cpf}</b>
             </button>
         </div>
     </div>

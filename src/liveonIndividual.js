@@ -69,7 +69,7 @@ export const createCPFIndividuo = async function (cpf) {
 
 
 export const getIndividuo = async function (cpf) {
-    document.getElementById('resposta').innerHTML = "resposta: processando... ";
+    document.getElementById('resposta').innerHTML = "Buscando Individuo CPF = " + cpf;
 
     const urlRegisterIndivuduo = liveonCredentials['urlProxy'] + '/v2/individual/' + cpf;
     var header = {
@@ -89,7 +89,9 @@ export const getIndividuo = async function (cpf) {
         .then(response => response.json())
         .then(result => {
             console.log(result);
-            document.getElementById('resposta').innerHTML = JSON.stringify(result);
+            document.getElementById('resposta').innerHTML = 
+            'Dados do Individuo Liveon CPF = ' + cpf + '<br /><br />' +
+            JSON.stringify(result);
         })
         .catch(error => console.log('error', error));
 }
