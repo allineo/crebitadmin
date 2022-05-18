@@ -52,11 +52,12 @@ export const createCPFIndividuo = async function (cpf) {
         redirect: 'follow'
     };
     fetch(urlRegisterIndivuduo, requestOptions)
-        .then(response => response.json())
+        .then(response => response.text())
         .then(result => {
             console.log(result);
             document.getElementById('resposta').innerHTML =
                 'Individuo Liveon criado para CPF = ' + cpf + '<br /><br />' +
+                text + 
                 JSON.stringify(result);
         })
         .catch(error => console.log('error', error));
