@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs, query, where  } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore';
 
 //https://console.cloud.google.com/firestore/import-export?project=rr4x-b8540&supportedpurview=project
 
@@ -17,16 +17,27 @@ const db = getFirestore(app);
 
 
 export const getUser = async function (cpf) {
-    let id = 'asd';
-    const colRef = collection(db, "users");
-    const q = query(colRef, where("cpf", "==", cpf));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
-      id = doc.id;
-    });
+  let id = '';
+  const colRef = collection(db, "users");
+  const q = query(colRef, where("cpf", "==", cpf));
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    let user = doc.data();
+    console.log(doc.id, " => ", user);
+    id = doc.id;
 
-    return id;
+    document.getElementById('firebaseUserDiv').innerHTML =
+      //'Usuário ID: ' + user['id'] + '<br />' +
+      'Nome: <b>' + user['nome'] + '</b> (Digitar o nome completo no Firestore de acordo com o documento)<br />' +
+      'CPF: <b>' + user['cpf'] + '</b> (Conferir no Firestore de acordo com o documento) <br />' +
+      'Whatsapp: <b>' + user['telefone'] + '</b>';
+
+    const baselink = 'https://console.firebase.google.com/u/0/project/rr4x-b8540/firestore/data/~2Fusers~2F';
+    document.getElementById('firebaseLinkDiv').innerHTML =
+      'Link: <a href=' + baselink + id +
+      ' target="_blank" rel="noreferrer">Valide os dados aqui </a>';
+  });
+
+  return id;
 }
 

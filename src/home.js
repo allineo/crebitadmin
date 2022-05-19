@@ -22,25 +22,26 @@ function FixUserLink(props) {
     //let user = firebase.queryByPhone(client, phone);
     const link = baselink; // + user['id'];  //Gdv69bPuYqwa54Q6p9PD  //user['nome'];
     const message = <div>
-        Usuário ID: (Falta buscar esses dados do Firestore) <br />
-        Nome: (Arjan precisa digitar o nome completo no Firestore de acordo com o documento) <br />
-        CPF: (Arjan precisa conferir no Firestore de acordo com o documento) <br />
-        Whatsapp: {props.phone} <br />
-        <br />
-        Link: <a href={link} target='_blank' rel="noreferrer">Valide os dados aqui </a>
-        <br />
-        (Fazer esse link abrir direto o id do usuario)
-
-
-        <br /> <br /> <br />
-        Gerar na Liveon os Steps  <br />
-        - Step 0 (CPF) e retornar o individual ID (cadastrar o LiveonID no Firebase) <br />
+        <div id='firebaseUserDiv'>
+            Usuário ID:  <br />
+            Nome: <br />
+            CPF: <br />
+            Whatsapp:
+        </div> <br />
+        <div id='firebaseLinkDiv'>
+            Link: <a href={link} target='_blank' rel="noreferrer">Valide os dados aqui </a>
+        </div>
+        <br /> <br />
+        Gerar na Liveon os Steps:  
+        <br /><br />
+        - Step 0 (Enviar CPF e retornar o individual ID) <br />
+        (cadastrar o LiveonID no Firebase) <br />
+        <ButtonCreateIndividuo cpf={props.props.cpf} />
+        <br /> <br />
         - Step 1 (Email) <br />
         - Step 2 (Phone) <br />
         - Step 3 (Address) <br />
-        - Step 4 (Profession) (automatico) <br />
-        <br />
-        <ButtonCreateIndividuo cpf={props.props.cpf} />
+        - Step 4 (Profession) (automatico)
         <br /><br />
         <div>
             <button onClick={() => getIndividuo(props.props.cpf)}>
