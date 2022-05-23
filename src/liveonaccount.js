@@ -52,14 +52,13 @@ exports.getAccountInfo = function (cpf) {
         body: data,
         redirect: 'follow'
     };
-    fetch("https://proxy.apps.binnovation.co:8000/alias", requestOptions)
+    fetch("http://proxy.apps.binnovation.co:8000/alias", requestOptions)
         .then(response => response.json())
         .then(result => {
             //console.log(result);
             let alias = result['alias_account']['account_number'];
-            console.log(alias);
             document.getElementById('resposta').innerHTML =
-                'Alias account = <b>' + alias + '</b>';
+                'Número da Conta na Liveon = <b>' + alias + '</b>';
         })
         .catch(error => console.log('error', error));
 
