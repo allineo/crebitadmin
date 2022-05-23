@@ -82,7 +82,7 @@ export const getIndividuo = async function (cpf) {
         body: data,
         redirect: 'follow'
     };
-    fetch(credentials['urlproxy_backend'] + "/getindividuo", requestOptions)
+    fetch(credentials['urlproxy_backend_localhost'] + "/getindividuo", requestOptions)
         .then(response => response.json())
         .then(result => {
                 console.log(result);

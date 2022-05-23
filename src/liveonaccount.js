@@ -5,7 +5,8 @@
 
 
 let credentials = {
-    "urlproxy_backend": "https://api-crebit.apps.binnovation.co"
+    "urlproxy_backend": "https://api-crebit.apps.binnovation.co",
+    "urlproxy_backend_localhost": "http://localhost:8000"
 };
 
 
@@ -22,7 +23,7 @@ exports.getAccountInfo = function (cpf) {
         body: data,
         redirect: 'follow'
     };
-    fetch(credentials['urlproxy_backend'] + "/alias", requestOptions)
+    fetch(credentials['urlproxy_backend_localhost'] + "/alias", requestOptions)
         .then(response => response.json())
         .then(result => {
             //console.log(result);
