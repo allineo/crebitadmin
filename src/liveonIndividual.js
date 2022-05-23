@@ -1,14 +1,10 @@
 
-
-let liveonCredentials = {
-    "urlProxy": 'https://proxy.apps.binnovation.co/crebit',
-    "url": "https://lotus-prod-apim.baas.solutions/crebit",
-    "subscriptionKey": "16d9f23318a14fe38555008356a59854",
-    "Authorization": "MFY2MzlPNVF5b0lpNDNINGh0RFhIQWVUNDMrUzh2OGxNdDY1bGJ4RjVzUT06U1Z0YmZ6QmxZV1Y3dkU0WTRDRU5jaE16OXFYOE11M3Z6enpNWmxUNzNZclI0b0NrM0VsdzltM0h2Nm12RmxYVllHRFVEWW5FeXY2UVBNTUJZSWY0V2c9PQ==",
-    "adminpwd": "70c071daac26ae7b"
+let credentials = {
+    "urlproxy_backend": "https://api-crebit.apps.binnovation.co",
+    "urlproxy_backend_localhost": "http://localhost:8000"
 };
 
-
+/*
 function getTokenRequestOptions() {
     var header = {
         'Content-Type': 'application/json'
@@ -33,9 +29,10 @@ function getToken() {
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
 }
-
+*/
 
 export const createCPFIndividuo = async function (cpf) {
+    /*
     document.getElementById('resposta').innerHTML = 'Criando individuo na Liveon para CPF = ' + cpf;
     const urlRegisterIndivuduo = liveonCredentials['urlProxy'] + '/v2/register/individual';
     var header = {
@@ -60,8 +57,8 @@ export const createCPFIndividuo = async function (cpf) {
                 result + 
                 JSON.stringify(result);
         })
-        .catch(error => console.log('error', error));
-}
+        .catch(error => console.log('error', error));*/
+} 
 /* { "success": true,
 #    "individual_id": "614220bf011fb90050503717",
 #    "document": "65904249187" }
@@ -69,38 +66,39 @@ export const createCPFIndividuo = async function (cpf) {
 
 
 
-export const getIndividuo = async function (cpf) {
-    document.getElementById('resposta').innerHTML = "Buscando Individuo CPF = " + cpf;
 
-    const urlRegisterIndivuduo = liveonCredentials['urlProxy'] + '/v2/individual/' + cpf;
+
+export const getIndividuo = async function (cpf) {
+//exports.getIndividuo = function (cpf) {
     var header = {
-        'Content-Type': 'application/json',
-        'Subscription-key': liveonCredentials['subscriptionKey'],
-        'Authorization': 'Basic ' + liveonCredentials['Authorization'],
-        //   'Access-Control-Allow-Origin': '*'
+        //'Content-Type': 'application/json',
     };
-    var data = JSON.stringify({});
+    var data = JSON.stringify({
+        "cpf": cpf 
+    });
     var requestOptions = {
-        method: 'GET',
+        method: 'POST',
         headers: header,
-        //body: data,
+        body: data,
         redirect: 'follow'
     };
-    fetch(urlRegisterIndivuduo, requestOptions)
+    fetch(credentials['urlproxy_backend'] + "/getindividuo", requestOptions)
         .then(response => response.json())
         .then(result => {
-            console.log(result);
-            document.getElementById('resposta').innerHTML = 
-            'Dados do Individuo Liveon CPF = ' + cpf + '<br /><br />' +
-            JSON.stringify(result);
+                console.log(result);
+                document.getElementById('resposta').innerHTML = 
+                'Dados do Individuo Liveon CPF = ' + cpf + '<br /><br />' +
+                JSON.stringify(result);
         })
         .catch(error => console.log('error', error));
+
 }
 
 
 
+
 export const sendDocInfo = async function (cpf) {
-    const urlDocInfo = liveonCredentials['urlProxy'] + '/v2/register/individual/step5';
+/*    const urlDocInfo = liveonCredentials['urlProxy'] + '/v2/register/individual/step5';
     var header = {
         'Content-Type': 'application/json',
         'Subscription-key': liveonCredentials['subscriptionKey']
@@ -141,9 +139,8 @@ export const sendDocInfo = async function (cpf) {
         .then(result => {
             console.log(result);
         })
-        .catch(error => console.log('error', error));
+        .catch(error => console.log('error', error));*/
 }
-
 
 
 

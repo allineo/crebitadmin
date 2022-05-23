@@ -26,6 +26,7 @@ function FixUserLink(props) {
             Usuário ID:  <br />
             Nome: <br />
             CPF: <br />
+            E-mail: <br />
             Whatsapp:
         </div> <br />
         <div id='firebaseLinkDiv'>

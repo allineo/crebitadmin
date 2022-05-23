@@ -4,43 +4,13 @@
 
 
 
-let liveonCredentials = {
-    "urlProxy": 'https://proxy.apps.binnovation.co/crebit',
-    "url": "https://lotus-prod-apim.baas.solutions/crebit",
-    "subscriptionKey": "16d9f23318a14fe38555008356a59854",
+let credentials = {
+    "urlproxy_backend": "https://api-crebit.apps.binnovation.co"
 };
-
-
-function getTokenRequestOptions() {
-    var header = {
-        //'Subscription-key': subscriptionkey,
-        'Content-Type': 'application/json',
-    };
-    var data = JSON.stringify({
-        "document": "14090172730",
-        "password": "727109"
-    });
-    var requestOptions = {
-        method: 'POST',
-        headers: header,
-        body: data,
-        redirect: 'follow'
-    };
-    return requestOptions;
-}
-
-function getToken() {
-    var requestOptions = getTokenRequestOptions()
-    fetch("https://proxy.apps.binnovation.co/crebit/auth", requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
-}
 
 
 exports.getAccountInfo = function (cpf) {
     var header = {
-        //'Subscription-key': subscriptionkey,
         //'Content-Type': 'application/json',
     };
     var data = JSON.stringify({
@@ -52,7 +22,7 @@ exports.getAccountInfo = function (cpf) {
         body: data,
         redirect: 'follow'
     };
-    fetch("http://proxy.apps.binnovation.co:8000/alias", requestOptions)
+    fetch(credentials['urlproxy_backend'] + "/alias", requestOptions)
         .then(response => response.json())
         .then(result => {
             //console.log(result);
@@ -61,5 +31,4 @@ exports.getAccountInfo = function (cpf) {
                 'Número da Conta na Liveon = <b>' + alias + '</b>';
         })
         .catch(error => console.log('error', error));
-
 }

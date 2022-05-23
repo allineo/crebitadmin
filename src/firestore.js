@@ -30,6 +30,7 @@ export const getUser = async function (cpf) {
       //'Usuário ID: ' + user['id'] + '<br />' +
       'Nome: <b>' + user['nome'] + '</b> (Digitar o nome completo no Firestore de acordo com o documento)<br />' +
       'CPF: <b>' + user['cpf'] + '</b> (Conferir no Firestore de acordo com o documento) <br />' +
+      'E-mail: <b>' + user['email'] + '</b><br />' +
       'Whatsapp: <b>' + user['telefone'] + '</b>';
 
     const baselink = 'https://console.firebase.google.com/u/0/project/rr4x-b8540/firestore/data/~2Fusers~2F';
