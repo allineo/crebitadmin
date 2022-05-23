@@ -23,7 +23,7 @@ exports.getAccountInfo = function (cpf) {
         body: data,
         redirect: 'follow'
     };
-    fetch(credentials['urlproxy_backend_localhost'] + "/alias", requestOptions)
+    fetch(credentials['urlproxy_backend'] + "/alias", requestOptions)
         .then(response => response.json())
         .then(result => {
             //console.log(result);
