@@ -1,7 +1,7 @@
 
 let credentials = {
     "urlproxy_backend": "https://api-crebit.apps.binnovation.co",
-    "urlproxy_backend_localhost": "http://localhost:8000"
+    "urlproxy_backend_localhost": "https://localhost:8000"
 };
 
 /*
