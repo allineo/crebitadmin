@@ -38,42 +38,29 @@ function getToken() {
 }
 
 
-exports.getAccountInfo =  function (cpf) {
-   // document.getElementById("messageField").innerHTML = 'Aguarde...';
-   // let code = document.getElementById("codeField").value;
-    //let token = getToken();
-    const urlAuth = "https://proxy.apps.binnovation.co/crebit/auth";
-    var requestOptions = getTokenRequestOptions();
-    fetch(urlAuth, requestOptions)
-        .then(response => response.text())
+exports.getAccountInfo = function (cpf) {
+    var header = {
+        //'Subscription-key': subscriptionkey,
+        //'Content-Type': 'application/json',
+    };
+    var data = JSON.stringify({
+        "cpf": cpf 
+    });
+    var requestOptions = {
+        method: 'POST',
+        headers: header,
+        body: data,
+        redirect: 'follow'
+    };
+    fetch("https://proxy.apps.binnovation.co:8000/alias", requestOptions)
+        .then(response => response.json())
         .then(result => {
-            console.log(result);
-            let token = result.token;
-            console.log(token);
-            const urlValidateCode = 'https://proxy.apps.binnovation.co/crebit' + '/pix/dict/validate_code';
-            /*var header = {
-                //'Subscription-key': subscriptionkey,
-                'Authorization': 'Bearer ' + token,
-                'Content-Type': 'application/json',
-            };
-            var data = JSON.stringify({
-                "key": '+' + phone,
-                "key_type": "phone",
-                "code": code
-            });
-            var requestOptions = {
-                method: 'POST',
-                headers: header,
-                body: data,
-                redirect: 'follow'
-            };
-            fetch(urlValidateCode, requestOptions)
-                .then(response => response.json())
-                .then(result => {
-                    console.log(result)
-                    exibeMensagem(result);
-                })
-                .catch(error => console.log('error', error));*/
+            //console.log(result);
+            let alias = result['alias_account']['account_number'];
+            console.log(alias);
+            document.getElementById('resposta').innerHTML =
+                'Alias account = <b>' + alias + '</b>';
         })
         .catch(error => console.log('error', error));
+
 }
