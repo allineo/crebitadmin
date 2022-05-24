@@ -10,12 +10,13 @@ let credentials = {
 };
 
 
-exports.getAccountInfo = function (cpf) {
+exports.getAccountInfo = function (client, cpf) {
     var header = {
         //'Content-Type': 'application/json',
     };
     var data = JSON.stringify({
-        "cpf": cpf 
+        "cpf": cpf ,
+        "client": client
     });
     var requestOptions = {
         method: 'POST',

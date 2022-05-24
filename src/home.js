@@ -30,35 +30,25 @@ function FixUserLink(props) {
             Whatsapp:
         </div> <br />
         <div id='firebaseLinkDiv'>
-            Link: <a href={link} target='_blank' rel="noreferrer">Valide os dados aqui </a>
+            Link: <a href={link} target='_blank' rel="noreferrer">Valide os dados do Firestore aqui</a>
         </div>
-        <br /> <br />
-        Gerar na Liveon os Steps:  
-        <br /><br />
-        - Step 0 (Enviar CPF e retornar o individual ID) <br />
-        (cadastrar o LiveonID no Firebase) <br />
-        <ButtonCreateIndividuo cpf={props.props.cpf} />
-        <br /> <br />
+        <br /> <br /> 
+        <button onClick={() => createCPFIndividuo(props.props.client, props.props.cpf)}>
+            CRIAR INDIVIDUO LIVEON<br /><b>CPF = {props.props.cpf}</b>
+        </button><br />
+        <br />
+        - Step 0 (CPF. Retorna o individual ID) <br />
         - Step 1 (Email) <br />
         - Step 2 (Phone) <br />
         - Step 3 (Address) <br />
-        - Step 4 (Profession) (automatico)
-        <br /><br />
+        - Step 4 (Profession)<br /><br />
         <div>
-            <button onClick={() => getIndividuo(props.props.cpf)}>
+            <button onClick={() => getIndividuo(props.props.client, props.props.cpf)}>
                 VER INDIVIDUO LIVEON<br /><b>CPF = {props.props.cpf}</b>
             </button>
         </div>
     </div>
     return message;
-}
-
-function ButtonCreateIndividuo(props) {
-    return (<div>
-        <button onClick={() => createCPFIndividuo(props.cpf)}>
-            CRIAR INDIVIDUO LIVEON<br /><b>CPF = {props.cpf}</b>
-        </button>
-    </div>);
 }
 
 
@@ -69,14 +59,20 @@ function LinksPostman(props) {
     const selfie = 'https://universal-crater-486876.postman.co/workspace/LiveOn~98ee052e-4a64-48bd-86f9-fb9481ca3998/request/2030980-cbce10e6-2e11-4239-924e-9ed2e496910b';
 
     const message = <div>
-        Verificar a qualidade da foto do documento enviada
-        <br />
-        - Step 5 (Document info) (Fazer um form para o Arjan inserir direto na Liveon) <br />
-        <br />
-        <button onClick={() => sendDocInfo(props.cpf)}>
+        - Step 5 (Document info) <br />
+        (Verificar a qualidade da foto do documento enviada) <br /><br />
+
+        Número do RG ou CNH: <input type='text' id='rg'></input><br/>
+        UF do documento: <input type='text' id='uf' placeholder='DF'></input><br/>
+        Data de emissão: <input type='text' id='emissao' placeholder='aaaa-mm-dd'></input><br/>
+        Nome da Mãe: <input type='text' id='mae' size='50'></input><br/>
+        Data de nascimento: <input type='text' id='nascimento' placeholder='aaaa-mm-dd'></input><br/>
+        Gênero: <input type='text' id='gender' placeholder='M ou F'></input><br/><br />
+
+        <button onClick={() => sendDocInfo(props.props.client, props.props.cpf)}>
             Enviar DOCS INFOS
-        </button>
-        <br /><br />
+        </button><br />
+        <br /><br /><br />
 
         - Step 6 - Upload do <a href={rg} target='_blank' rel="noreferrer" >RG/CNH</a> <br />
         &nbsp; &nbsp; &nbsp; &nbsp; * Trocar <b>LIVEON ID</b> da URL do POST (/step6/<b>61c383d1ad6ec3005e414804</b>?image_type=)<br />

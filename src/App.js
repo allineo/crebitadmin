@@ -5,12 +5,12 @@ import AdminContent from './adminpane';
 
 function App() {
 
-  const client = 'RR4X';
   let phone = getUrlParameter('p');
   let cpf = getUrlParameter('cpf');
+  let client = getUrlParameter('client');
 
-  let userid = getUser(cpf);
-  console.log('userid ' + userid);
+  let userid = getUser(client, cpf);
+  //console.log('userid ' + userid);
 
   return (<div>
     <center><b>PORTAL ADMINISTRATIVO</b></center>
