@@ -27,7 +27,7 @@ exports.getAccountInfo = function (client, cpf) {
         .then(response => response.json())
         .then(result => {
             //console.log(result);
-            let alias = result['alias_account']['account_number'];
+            let alias = result['alias_account']; //['account_number'];
             document.getElementById('resposta').innerHTML =
                 'Número da Conta na Liveon = <b>' + alias + '</b>';
         })
