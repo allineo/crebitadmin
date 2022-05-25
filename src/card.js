@@ -20,5 +20,3 @@ function CardContent(props) {
 }
 
 export default CardContent;
-
-//4261760537464823

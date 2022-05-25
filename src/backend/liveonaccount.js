@@ -60,8 +60,9 @@ exports.activateCard = function (client, cpf) {
         .then(response => response.json())
         .then(result => {
             //console.log(result);
+            const num = cpf.substring(3, 7).split("").reverse().join("");
             document.getElementById('resposta').innerHTML =
-                'Cartão ativado <br /><br />' + JSON.stringify(result);
+                'Ativação: ' + num + '<br /><br />' + JSON.stringify(result);
         })
         .catch(error => {
             console.log('error', error);
