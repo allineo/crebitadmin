@@ -3,9 +3,9 @@ import { sendDocInfo } from './backend/liveonIndividual';
 
 function DocsContent(props) {
     return (<div>
-        <FormDocsInfo props={props} />
+        <FormDocsInfo props={props.props} />
         <br /><br />
-        <LinksPostman props={props} />
+        <LinksPostman props={props.props} />
     </div>);
 }
 
@@ -22,7 +22,6 @@ function FormDocsInfo(props) {
         Nome da Mãe: <input type='text' id='mae' size='50'></input><br />
         Data de nascimento: <input type='text' id='nascimento' placeholder='aaaa-mm-dd'></input><br />
         Gênero: <input type='text' id='gender' placeholder='M ou F'></input><br /><br />
-
         <button onClick={() => sendDocInfo(props.props.client, props.props.cpf)}>
             Enviar DOCS INFOS
         </button>

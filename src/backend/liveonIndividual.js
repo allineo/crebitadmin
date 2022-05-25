@@ -87,6 +87,8 @@ export const sendDocInfo = async function (client, cpf) {
         },
         "cpf": cpf,
         "client": client });
+        console.log(cpf);
+        console.log(data);
     fetch(credentials['urlproxy_backend'] + "/docsinfo", getRequestOptions(data))
         .then(response => response.json())
         .then(result => {
@@ -119,38 +121,3 @@ export const approve = async function (client, cpf) {
             document.getElementById('resposta').innerHTML = JSON.stringify(error);
         });
 }
-
-
-/*
-
-async function acesso(userdata) {
-    const individual_id = userdata['liveon']['individual_id'];
-    if (individual_id != '') {
-        try {
-            const url = liveonCredentials['url'] + '/v2/register/individual/step9';
-            const headers = {
-                'Content-Type': 'application/json',
-                'Subscription-key': liveonCredentials['subscriptionKey']
-            }
-            const access = userdata['cpf'].substring(3, 9).split("").reverse().join("");
-            const data = JSON.stringify({
-                "individual_id": individual_id,
-                "password": access,
-                "confirm_password": access
-            });
-            const resp = await axios.post(url, data, {
-                headers: headers
-            })
-                .then(function (response) {
-                    return response.data;
-                })
-                .catch(function (error) {
-                    console.log('error.response.data: ' + JSON.stringify(error.response.data));
-                    console.log('error.config: ' + JSON.stringify(error.config));
-                    //console.log(error);
-                });
-        } catch (_error) {
-            console.log("rendaIndividual " + _error);
-        }
-    }
-}*/
