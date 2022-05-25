@@ -21,8 +21,6 @@ export default HomeContent;
 
 
 function FixUserLink(props) {
-    const baselink = 'https://console.firebase.google.com/u/0/project/rr4x-b8540/firestore/data/~2Fusers~2F';
-    const link = baselink;
     const message = <div>
         <div id='firebaseUserDiv'>
             Usuário ID:  <br />
@@ -30,9 +28,6 @@ function FixUserLink(props) {
             CPF: <br />
             E-mail: <br />
             Whatsapp:
-        </div> <br />
-        <div id='firebaseLinkDiv'>
-            <a href={link} target='_blank' rel="noreferrer">Valide os dados do Firestore aqui</a>
         </div>
         <br /> <br />
         <button onClick={() => createCPFIndividuo(props.props.client, props.props.cpf)}>
