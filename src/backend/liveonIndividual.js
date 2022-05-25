@@ -87,7 +87,6 @@ export const sendDocInfo = async function (client, cpf) {
         },
         "cpf": cpf,
         "client": client });
-    console.log(data);
     fetch(credentials['urlproxy_backend'] + "/docsinfo", getRequestOptions(data))
         .then(response => response.json())
         .then(result => {
@@ -102,6 +101,24 @@ export const sendDocInfo = async function (client, cpf) {
         });
 }
 
+
+export const approve = async function (client, cpf) {
+    var data = JSON.stringify({
+        "cpf": cpf,
+        "client": client });
+    fetch(credentials['urlproxy_backend'] + "/approveindividuo", getRequestOptions(data))
+        .then(response => response.json())
+        .then(result => {
+            //console.log(result);
+            document.getElementById('resposta').innerHTML =
+                'Individuo Liveon APROVADO CPF = ' + cpf + '<br /><br />' +
+                JSON.stringify(result);
+        })
+        .catch(error => {
+            console.log('error', error);
+            document.getElementById('resposta').innerHTML = JSON.stringify(error);
+        });
+}
 
 
 /*

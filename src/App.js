@@ -1,5 +1,5 @@
 import './App.css';
-import { getUser } from './firestore';
+import { getUser } from './backend/firestore';
 import HomeContent from './home';
 import AdminContent from './adminpane';
 

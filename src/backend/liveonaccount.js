@@ -15,7 +15,7 @@ exports.getAccountInfo = function (client, cpf) {
         //'Content-Type': 'application/json',
     };
     var data = JSON.stringify({
-        "cpf": cpf ,
+        "cpf": cpf,
         "client": client
     });
     var requestOptions = {
