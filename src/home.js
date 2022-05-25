@@ -1,4 +1,5 @@
 import DocsContent from './docs';
+import CardContent from './card';
 import { createCPFIndividuo, getIndividuo, approve } from './backend/liveonIndividual';
 
 
@@ -13,7 +14,10 @@ function HomeContent(props) {
         <DocsContent props={props} />
         <br /><br />
         <Aprovacao props={props} />
-        <br /><br /><br />
+        <br /><br /><br /> 
+        <hr></hr>
+        <CardContent props={props} />
+        <br /><br />
     </div>);
 }
 
@@ -60,23 +64,14 @@ function Aprovacao(props) {
         Muito bem! Sua Conta Digital foi criada com sucesso. Em breve estará liberada para sua utilização.
         <br /> <br />
 
-        Adicionar Alias Account da Liveon no Firebase <br /><br />
+        Se a conta estiver nula, 
+        <a href='https://liveonsolutions.zendesk.com/hc/pt-br' target='_blank' rel='noreferrer'>
+        enviar solicitação de ajuste para a Liveon.</a><br /><br />
+
+        Após conta criada, adicionar número da conta no Firebase <br /><br />
 
         Enviar Mensagem Whatsapp final para o cliente:<br />
         Olá! Sua Conta Digital já está funcionando!
         Digite *c* para acessar a lista de transações financeiras disponíveis.
-
-        <br /><br /> 
-        <hr></hr>
-        <br />
-
-        <b>CARTÃO</b>:<br />
-        <br />
-        Embossar o cartao do cliente<br />
-        <br />
-        Pegar o numero completo do cartao do cliente<br />
-        Entregar o cartao para o cliente<br />
-        Associar o numero do cartao do cliente ao id do individuo<br />
-        Criar a senha do cliente<br />
     </div>);
 }

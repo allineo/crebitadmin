@@ -29,6 +29,8 @@ function getToken() {
 */
 
 export const createCPFIndividuo = async function (client, cpf) {
+    document.getElementById('resposta').innerHTML =
+        'Enviando os dados do Individuo Liveon CPF = ' + cpf;
     var data = JSON.stringify({
         "cpf": cpf,
         "client": client
@@ -50,9 +52,6 @@ export const createCPFIndividuo = async function (client, cpf) {
 #    "individual_id": "614220bf011fb90050503717",
 #    "document": "65904249187" }
 # {"success":false,"code":101,"error_message":"Esse indivíduo já existe","error_data":null} */
-
-
-
 
 
 export const getIndividuo = async function (client, cpf) {
@@ -86,9 +85,8 @@ export const sendDocInfo = async function (client, cpf) {
             "gender": document.getElementById('gender').value
         },
         "cpf": cpf,
-        "client": client });
-        console.log(cpf);
-        console.log(data);
+        "client": client
+    });
     fetch(credentials['urlproxy_backend'] + "/docsinfo", getRequestOptions(data))
         .then(response => response.json())
         .then(result => {
@@ -103,11 +101,16 @@ export const sendDocInfo = async function (client, cpf) {
         });
 }
 
+//289017444
+//2019-07-19
+//Fernanda Dias da Cruz de Paula
+//2001-10-23
 
 export const approve = async function (client, cpf) {
     var data = JSON.stringify({
         "cpf": cpf,
-        "client": client });
+        "client": client
+    });
     fetch(credentials['urlproxy_backend'] + "/approveindividuo", getRequestOptions(data))
         .then(response => response.json())
         .then(result => {
