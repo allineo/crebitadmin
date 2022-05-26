@@ -1,5 +1,7 @@
 import DocsContent from './docs';
 import CardContent from './card';
+import AdminContent from './adminpane';
+
 import { createCPFIndividuo, getIndividuo, approve } from './backend/liveonIndividual';
 
 
@@ -9,19 +11,40 @@ import { createCPFIndividuo, getIndividuo, approve } from './backend/liveonIndiv
 
 function HomeContent(props) {
     return (<div>
+        <br />
+        <div className='leftPane'>
+            <br /><center><b>ONBOARDING</b></center><br />
+            <OnboardingPanel client={props.client} phone={props.phone} cpf={props.cpf} />
+        </div>
+        <div className='rightPane'>
+            <br /><center><b>MANUTENÇÃO</b></center><br />
+            <AdminContent client={props.client} phone={props.phone} cpf={props.cpf} />
+            <br />
+            <hr></hr>
+            <br />
+            Resposta:
+            <br /><br />
+            <div id='resposta'>aqui</div>
+        </div>
+    </div>);
+}
+
+export default HomeContent;
+
+
+function OnboardingPanel(props) {
+    return (<div>
         <FixUserLink props={props} />
         <br /><br />
         <DocsContent props={props} />
         <br /><br />
         <Aprovacao props={props} />
-        <br /><br /><br /> 
+        <br /><br /><br />
         <hr></hr>
         <CardContent props={props} />
         <br /><br />
     </div>);
 }
-
-export default HomeContent;
 
 
 function FixUserLink(props) {
@@ -64,9 +87,9 @@ function Aprovacao(props) {
         Muito bem! Sua Conta Digital foi criada com sucesso. Em breve estará liberada para sua utilização.
         <br /> <br />
 
-        Se a conta estiver nula, 
+        Se a conta estiver nula,
         <a href='https://liveonsolutions.zendesk.com/hc/pt-br' target='_blank' rel='noreferrer'>
-        enviar solicitação de ajuste para a Liveon.</a><br /><br />
+            enviar solicitação de ajuste para a Liveon.</a><br /><br />
 
         Após conta criada, adicionar número da conta no Firebase <br /><br />
 

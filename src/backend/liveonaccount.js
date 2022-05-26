@@ -42,6 +42,38 @@ exports.getAccountInfo = function (client, cpf) {
 
 
 exports.activateCard = function (client, cpf) {
+    document.getElementById('resposta').innerHTML = 'Ativando cartão';
+    var header = {
+        //'Content-Type': 'application/json',
+    };
+    var data = JSON.stringify({
+        "cpf": cpf,
+        "client": client,
+        "card" : document.getElementById('card').value,
+    });
+    var requestOptions = {
+        method: 'POST',
+        headers: header,
+        body: data,
+        redirect: 'follow'
+    };
+    fetch(credentials['urlproxy_backend'] + "/activatecard", requestOptions)
+        .then(response => response.json())
+        .then(result => {
+            //console.log(result);
+            const num = cpf.substring(3, 7).split("").reverse().join("");
+            document.getElementById('resposta').innerHTML =
+                'Ativação: ' + num + '<br /><br />' + JSON.stringify(result);
+        })
+        .catch(error => {
+            console.log('error', error);
+            document.getElementById('resposta').innerHTML = JSON.stringify(error);
+        });
+}
+
+
+exports.listCards = function (client, cpf) {
+    document.getElementById('resposta').innerHTML = 'Listando cartoes...';
     var header = {
         //'Content-Type': 'application/json',
     };

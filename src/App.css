@@ -1,0 +1,11 @@
+.login__btn {
+    padding: 10px;
+    font-size: 18px;
+    margin-bottom: 10px;
+    border: none;
+    color: white;
+    background-color: black;
+  }
+  .login__google {
+    background-color: #4285f4;
+  }

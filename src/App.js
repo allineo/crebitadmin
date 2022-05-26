@@ -1,39 +1,40 @@
+import { useState } from 'react';
+import { signInWithGoogle } from './backend/firebaseauth';
 import './App.css';
-import { getUser } from './backend/firestore';
 import HomeContent from './home';
-import AdminContent from './adminpane';
 
 function App() {
+
+  const [appMode, setAppMode] = useState(0);
 
   let phone = getUrlParameter('p');
   let cpf = getUrlParameter('cpf');
   let client = getUrlParameter('client');
 
-  let userid = getUser(client, cpf);
-  //console.log('userid ' + userid);
-
-  return (<div>
-    <center><b>PORTAL ADMINISTRATIVO</b></center>
-    <br />
-    <div className='leftPane'>
-      <br /><center><b>ONBOARDING</b></center><br />
-      <HomeContent client={client} phone={phone} cpf={cpf} />
-    </div>
-    <div className='rightPane'>
-      <br /><center><b>MANUTENÇÃO</b></center><br />
-      <AdminContent client={client} phone={phone} cpf={cpf} />
-      <br />
-      <hr></hr>
-      <br />
-        Resposta:
-        <br /><br />
-        <div id='resposta'>aqui</div>
-    </div>
-  </div>
-  );
+  if (appMode === 'home') {
+    return (
+    <div>
+      <LoginPane client={client} cpf={cpf} setAppMode={setAppMode} />
+      <HomeContent client={client} cpf={cpf} />
+      </div>);
+  } else {
+    return (<LoginPane client={client} cpf={cpf} setAppMode={setAppMode} />);
+  }
 }
 
 export default App;
+
+
+function LoginPane(props) {
+  return (<div>
+    <center><b>PORTAL ADMINISTRATIVO</b>
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <button className="login__btn login__google" onClick={signInWithGoogle(props.client, props.cpf, props.setAppMode)}>
+        Login with Google
+      </button>
+    </center>
+  </div>);
+}
 
 
 function getUrlParameter(urlParameterName) {
