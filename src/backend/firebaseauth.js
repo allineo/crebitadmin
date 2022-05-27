@@ -21,7 +21,10 @@ const getFirebaseProject = function (client) {
 }
 
 
-function getConfig(client) {
+function getFirebaseConfig() {
+
+    let client = getUrlParameter('client');
+
     let firebaseConfig = {
         "apiKey": "AIzaSyDjjlPT9eNsBfSU3elUEG3Ma8mNqrQovPw",
         "authDomain": "crebitbot.firebaseapp.com",
@@ -57,27 +60,11 @@ function getConfig(client) {
     return firebaseConfig;
 }
 
-const getFirebaseApp = async function (client) {
-    let app = await initializeApp(getConfig(client));
-    //const provider = new GoogleAuthProvider();
-    const auth = await getAuth(app);
-    return app;
-}
 
-let firebaseConfig = {
-    "apiKey": "AIzaSyDjjlPT9eNsBfSU3elUEG3Ma8mNqrQovPw",
-    "authDomain": "crebitbot.firebaseapp.com",
-    "projectId": "crebitbot",
-    "storageBucket": "crebitbot.appspot.com",
-    "messagingSenderId": "831018541149",
-    "appId": "1:831018541149:web:808a236e4a47949b6cedb4"
-};
-
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(getFirebaseConfig());
 const auth = getAuth(app);
 const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
-
 
 const signInWithGoogle = async (client, cpf, setAppMode) => {
     try {
@@ -112,7 +99,9 @@ function verificaAdmins(useremail) {
         "michellysabatiny@gmail.com",
         "marcusfellipe7@gmail.com",
         "arjan.duarte2017@gmail.com",
-        "mserra.araujo@gmail.com"];
+        "mserra.araujo@gmail.com", 
+        "eluiz98@gmail.com",
+        "diogo@paxpay.com.br"];
     if (admins.includes(useremail)) {
         return true;
     } else {
@@ -122,6 +111,15 @@ function verificaAdmins(useremail) {
 }
 
 
+
+function getUrlParameter(urlParameterName) {
+    // tslint:disable-next-line: no-conditional-assignment
+    if (urlParameterName = (new RegExp('[?&]' +
+        encodeURIComponent(urlParameterName) + '=([^&]*)'))
+        .exec(window.location.search)) {
+        return decodeURIComponent(urlParameterName[1]);
+    }
+}
 
 
 
