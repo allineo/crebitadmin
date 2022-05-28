@@ -1,9 +1,4 @@
 
-// https://maas-baas.readme.io
-// https://www.getpostman.com/collections/8642d8b8301dd4bbdd2d
-
-
-
 let credentials = {
     "urlproxy_backend": "https://api-crebit.apps.binnovation.co"
 };

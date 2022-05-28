@@ -77,6 +77,8 @@ export const getIndividuo = async function (client, cpf) {
 export const sendDocInfo = async function (client, cpf) {
     var data = JSON.stringify({
         "docs": {
+            "id": document.getElementById('liveonid').innerHTML,
+            "nome": document.getElementById('nomeuser').innerHTML,
             "rg": document.getElementById('rg').value,
             "uf": document.getElementById('uf').value,
             "emissao": document.getElementById('emissao').value,
@@ -108,6 +110,7 @@ export const sendDocInfo = async function (client, cpf) {
 
 export const approve = async function (client, cpf) {
     var data = JSON.stringify({
+        "id": document.getElementById('liveonid').innerHTML,
         "cpf": cpf,
         "client": client
     });

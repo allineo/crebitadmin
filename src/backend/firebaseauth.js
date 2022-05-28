@@ -3,6 +3,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/
 import { getFirestore } from 'firebase/firestore';
 import { getUser } from './firestore.js';
 
+let currentadmin = null;
 
 const getFirebaseProject = function (client) {
     let projectName = "crebitbot";
@@ -68,19 +69,21 @@ const googleProvider = new GoogleAuthProvider();
 
 const signInWithGoogle = async (client, cpf, setAppMode) => {
     try {
-        const res = await signInWithPopup(auth, googleProvider);
-        const user = res.user;
-        //console.log(user.uid);
-        console.log(user.displayName);
-        if (verificaAdmins(user.email)) {
-            setAppMode('home');
+        if (currentadmin == null) {
+            const res = await signInWithPopup(auth, googleProvider);
+            currentadmin = res.user;
+            //console.log(user.uid);
+            console.log(currentadmin.displayName);
+            if (verificaAdmins(currentadmin.email)) {
+                setAppMode('home');
+            }
+            let usuarioid = getUser(db, getFirebaseProject(client), cpf);
+            //console.log('userid ' + userid);
+            return usuarioid;
         }
-
-        let usuarioid = getUser(db, getFirebaseProject(client), cpf);
-        //console.log('userid ' + userid);
     } catch (err) {
         console.error(err);
-        alert(err.message);
+        //alert(err.message);
     }
 };
 
@@ -99,9 +102,10 @@ function verificaAdmins(useremail) {
         "michellysabatiny@gmail.com",
         "marcusfellipe7@gmail.com",
         "arjan.duarte2017@gmail.com",
-        "mserra.araujo@gmail.com", 
+        "mserra.araujo@gmail.com",
         "eluiz98@gmail.com",
-        "diogo@paxpay.com.br"];
+        "diogo@paxpay.com.br", 
+        "luanriquelmedias@gmail.com"];
     if (admins.includes(useremail)) {
         return true;
     } else {
