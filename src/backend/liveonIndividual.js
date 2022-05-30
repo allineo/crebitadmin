@@ -54,10 +54,9 @@ export const createCPFIndividuo = async function (client, cpf) {
 # {"success":false,"code":101,"error_message":"Esse indivíduo já existe","error_data":null} */
 
 
-export const getIndividuo = async function (client, cpf) {
+export const getIndividuo = async function (cpf) {
     var data = JSON.stringify({
-        "cpf": cpf,
-        "client": client
+        "cpf": cpf
     });
     fetch(credentials['urlproxy_backend'] + "/getindividuo", getRequestOptions(data))
         .then(response => response.json())
@@ -74,7 +73,7 @@ export const getIndividuo = async function (client, cpf) {
 }
 
 
-export const sendDocInfo = async function (client, cpf) {
+export const sendDocInfo = async function (cpf) {
     var data = JSON.stringify({
         "docs": {
             "id": document.getElementById('liveonid').innerHTML,
@@ -85,9 +84,7 @@ export const sendDocInfo = async function (client, cpf) {
             "mae": document.getElementById('mae').value,
             "nascimento": document.getElementById('nascimento').value,
             "gender": document.getElementById('gender').value
-        },
-        "cpf": cpf,
-        "client": client
+        }
     });
     fetch(credentials['urlproxy_backend'] + "/docsinfo", getRequestOptions(data))
         .then(response => response.json())
