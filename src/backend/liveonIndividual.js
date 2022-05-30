@@ -103,16 +103,10 @@ export const sendDocInfo = async function (client, cpf) {
         });
 }
 
-//289017444
-//2019-07-19
-//Fernanda Dias da Cruz de Paula
-//2001-10-23
-
-export const approve = async function (client, cpf) {
+export const approve = async function (cpf) {
     var data = JSON.stringify({
         "id": document.getElementById('liveonid').innerHTML,
-        "cpf": cpf,
-        "client": client
+        "cpf": cpf
     });
     fetch(credentials['urlproxy_backend'] + "/approveindividuo", getRequestOptions(data))
         .then(response => response.json())
