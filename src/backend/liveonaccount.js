@@ -5,16 +5,12 @@ let credentials = {
 
 
 exports.getAccountInfo = function (client, cpf) {
-    var header = {
-        //'Content-Type': 'application/json',
-    };
     var data = JSON.stringify({
-        "cpf": cpf,
-        "client": client
+        "cpf": cpf
     });
     var requestOptions = {
         method: 'POST',
-        headers: header,
+        headers: {},
         body: data,
         redirect: 'follow'
     };
@@ -38,9 +34,6 @@ exports.getAccountInfo = function (client, cpf) {
 
 exports.activateCard = function (client, cpf) {
     document.getElementById('resposta').innerHTML = 'Ativando cartão';
-    var header = {
-        //'Content-Type': 'application/json',
-    };
     var data = JSON.stringify({
         "cpf": cpf,
         "client": client,
@@ -48,7 +41,7 @@ exports.activateCard = function (client, cpf) {
     });
     var requestOptions = {
         method: 'POST',
-        headers: header,
+        headers: {},
         body: data,
         redirect: 'follow'
     };
@@ -67,29 +60,23 @@ exports.activateCard = function (client, cpf) {
 }
 
 
-exports.listCards = function (client, cpf) {
+exports.listCards = function (cpf) {
     document.getElementById('resposta').innerHTML = 'Listando cartoes...';
-    var header = {
-        //'Content-Type': 'application/json',
-    };
     var data = JSON.stringify({
-        "cpf": cpf,
-        "client": client,
-        "card" : document.getElementById('card').value,
+        "cpf": cpf
     });
     var requestOptions = {
         method: 'POST',
-        headers: header,
+        headers: {},
         body: data,
         redirect: 'follow'
     };
-    fetch(credentials['urlproxy_backend'] + "/activatecard", requestOptions)
+    fetch(credentials['urlproxy_backend'] + "/listcards", requestOptions)
         .then(response => response.json())
         .then(result => {
             //console.log(result);
-            const num = cpf.substring(3, 7).split("").reverse().join("");
             document.getElementById('resposta').innerHTML =
-                'Ativação: ' + num + '<br /><br />' + JSON.stringify(result);
+                'CARTOES: <br /><br />' + JSON.stringify(result);
         })
         .catch(error => {
             console.log('error', error);

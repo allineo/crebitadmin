@@ -1,5 +1,5 @@
 
-import { activateCard } from './backend/liveonaccount';
+import { activateCard, listCards } from './backend/liveonaccount';
 
 function CardContent(props) {
     return (<div>
@@ -12,6 +12,9 @@ function CardContent(props) {
         Número do Cartão: <input type='text' id='card'></input> &nbsp;
         <button onClick={() => activateCard(props.props.client, props.props.cpf)}>
             ATIVAR CARTÃO
+        </button> &nbsp; &nbsp;
+        <button onClick={() => listCards(props.props.cpf)}>
+            LISTAR CARTÕES
         </button>
         <br /><br />
         Enviar SMS de senha para o cliente<br />
