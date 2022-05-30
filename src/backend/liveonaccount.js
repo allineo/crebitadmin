@@ -4,7 +4,7 @@ let credentials = {
 };
 
 
-exports.getAccountInfo = function (client, cpf) {
+exports.getAccountInfo = function (cpf) {
     var data = JSON.stringify({
         "cpf": cpf
     });
@@ -32,11 +32,10 @@ exports.getAccountInfo = function (client, cpf) {
 }
 
 
-exports.activateCard = function (client, cpf) {
+exports.activateCard = function (cpf) {
     document.getElementById('resposta').innerHTML = 'Ativando cartão';
     var data = JSON.stringify({
         "cpf": cpf,
-        "client": client,
         "card" : document.getElementById('card').value,
     });
     var requestOptions = {

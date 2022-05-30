@@ -67,7 +67,7 @@ function FixUserLink(props) {
         - Step 3 (Address) <br />
         - Step 4 (Profession)<br /><br />
         <div>
-            <button onClick={() => getIndividuo(props.props.client, props.props.cpf)}>
+            <button onClick={() => getIndividuo(props.props.cpf)}>
                 VER INDIVIDUO LIVEON<br /><b>CPF = {props.props.cpf}</b>
             </button>
         </div>
@@ -79,7 +79,7 @@ function FixUserLink(props) {
 
 function Aprovacao(props) {
     return (<div>
-        <button onClick={() => approve(props.props.client, props.props.cpf)}>
+        <button onClick={() => approve(props.props.cpf)}>
             APROVAR INDIVIDUO LIVEON<br /><b>CPF = {props.props.cpf}</b>
         </button>
         <br /> <br />

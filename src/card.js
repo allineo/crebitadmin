@@ -5,19 +5,19 @@ function CardContent(props) {
     return (<div>
         <b>CARTÃO</b>:<br />
         <br />
-        Embossar o cartao do cliente (Alline)<br />
+        1. Embossar o cartao do cliente (Alline)<br />
         <br />
-        Entregar o cartao para o cliente<br /><br />
+        2. Entregar o cartao para o cliente<br /><br />
 
-        Número do Cartão: <input type='text' id='card'></input> &nbsp;
-        <button onClick={() => activateCard(props.props.client, props.props.cpf)}>
+        3. Número do Cartão: <input type='text' id='card'></input> &nbsp;
+        <button onClick={() => activateCard(props.props.cpf)}>
             ATIVAR CARTÃO
         </button> &nbsp; &nbsp;
         <button onClick={() => listCards(props.props.cpf)}>
             LISTAR CARTÕES
         </button>
         <br /><br />
-        Enviar SMS de senha para o cliente<br />
+        4. Enviar SMS de senha para o cliente<br />
 
     </div>);
 }
