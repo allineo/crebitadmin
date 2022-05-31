@@ -1,32 +1,18 @@
 
 let credentials = {
-    "urlproxy_backend": "https://api-crebit.apps.binnovation.co",
-    "urlproxy_backend_localhost": "https://localhost:8000"
+    "urlproxy_backend": "https://api-crebit.apps.binnovation.co"
 };
 
 
 function getRequestOptions(data) {
-    var header = {
-        //'Content-Type': 'application/json',
-    };
     var requestOptions = {
         method: 'POST',
-        headers: header,
+        headers: {},
         body: data,
         redirect: 'follow'
     };
     return requestOptions;
 }
-
-/*
-function getToken() {
-    var requestOptions = getTokenRequestOptions()
-    fetch(liveonCredentials['urlProxy'] + "/auth", requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
-}
-*/
 
 export const createCPFIndividuo = async function (client, cpf) {
     document.getElementById('resposta').innerHTML =
@@ -101,6 +87,7 @@ export const sendDocInfo = async function (cpf) {
 }
 
 export const approve = async function (cpf) {
+    document.getElementById('resposta').innerHTML = 'Aprovando individuo...';
     var data = JSON.stringify({
         "id": document.getElementById('liveonid').innerHTML,
         "cpf": cpf

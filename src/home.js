@@ -1,5 +1,6 @@
 import DocsContent from './docs';
 import CardContent from './card';
+import CNPJContent from './cnpj';
 import AdminContent from './adminpane';
 
 import { createCPFIndividuo, getIndividuo, approve } from './backend/liveonIndividual';
@@ -42,6 +43,8 @@ function OnboardingPanel(props) {
         <br /><br /><br />
         <hr></hr>
         <CardContent props={props} />
+        <hr></hr>
+        <CNPJContent props={props} />
         <br /><br />
     </div>);
 }

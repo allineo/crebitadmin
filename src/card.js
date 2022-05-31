@@ -17,7 +17,7 @@ function CardContent(props) {
             LISTAR CARTÕES
         </button>
         <br /><br />
-        4. Enviar SMS de senha para o cliente<br />
+        4. Enviar SMS de senha para o cliente<br /><br />
 
     </div>);
 }
