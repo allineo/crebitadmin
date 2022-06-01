@@ -19,8 +19,8 @@ export const createCNPJ = async function () {
     var data = JSON.stringify({
         "companyType": document.getElementById('typeempresa').value,
         "companySubject": document.getElementById('subject').value,
-        "companyNature": document.getElementById('liveonid').value,
-        "companyName": document.getElementById('nature').value,
+        "companyNature": document.getElementById('nature').value,
+        "companyName": document.getElementById('nameempresa').value,
         "companyEmail": document.getElementById('emailempresa').value,
         "documentNumber": document.getElementById('cnpj').value,
         "exemptStateRegistration": true,
