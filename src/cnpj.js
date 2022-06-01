@@ -13,7 +13,7 @@ export default CNPJContent;
 
 function FormCNPJ(props) {
     return (<div>
-        <br /><b>EMPRESA CNPJ</b>:<br />
+        <b>EMPRESA CNPJ</b>:<br />
         <br />
         - Step 1 (Registro da Empresa) <br /><br />
 
