@@ -20,10 +20,10 @@ function FormCNPJ(props) {
         Nome da Empresa: <input type='text' id='nameempresa' placeholder='Empresa Tal' size='50'/><br />
         E-mail da Empresa: <input type='text' id='emailempresa' size='50'/><br />
         CNPJ da Empresa: <input type='text' id='cnpj' size='50'/><br /><br />
-        Tipo de Empresa: <input type='text' id='typeempresa' value='Sociedade Empresária Limitada (LTDA)' size='50'/><br />
+        Tipo de Empresa: <input type='text' id='typeempresa' defaultValue='Sociedade Empresária Limitada (LTDA)' size='50'/><br />
         Atividade Principal: <input type='text' id='subject'
             placeholder='8211-3/00 Serviços combinados de escritório e apoio administrativo' size='50'/><br />
-        Natureza Jurídica: <input type='text' id='nature' value='206-2 - Sociedade Empresária Limitada' size='50'/><br />
+        Natureza Jurídica: <input type='text' id='nature' defaultValue='206-2 - Sociedade Empresária Limitada' size='50'/><br />
         Data de Abertura: <input type='text' id='opening' placeholder='aaaa-mm-dd'/><br /><br />
         CEP: <input type='text' id='cepempresa' size='10'/> &nbsp;
         Cidade: <input type='text' id='cidadeempresa' size='30'/> &nbsp;
