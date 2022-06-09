@@ -1,3 +1,5 @@
+import { currentuser } from './firebaseauth';
+
 
 let credentials = {
     "urlproxy_backend": "https://api-crebit.apps.binnovation.co"
@@ -56,3 +58,22 @@ export const createCNPJ = async function () {
 #    "individual_id": "614220bf011fb90050503717",
 #    "document": "65904249187" }
 # {"success":false,"code":101,"error_message":"Esse indivíduo já existe","error_data":null} */
+
+
+export const getCompany = async function (cnpj) {
+    var data = JSON.stringify({
+        "id": currentuser['id']
+    });
+    fetch(credentials['urlproxy_backend'] + "/getcompany", getRequestOptions(data))
+        .then(response => response.json())
+        .then(result => {
+            //console.log(result);
+            document.getElementById('resposta').innerHTML =
+                'Dados da Empresa Liveon CNPJ<br /><br />' +
+                JSON.stringify(result);
+        })
+        .catch(error => {
+            console.log('error', error);
+            document.getElementById('resposta').innerHTML = JSON.stringify(error);
+        });
+}

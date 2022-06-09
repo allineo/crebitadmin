@@ -2,17 +2,16 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 
 
 export const getUser = async function (db, projectName, cpf) {
-  let id = '';
+  let user = null;
   const colRef = collection(db, "users");
   const q = query(colRef, where("cpf", "==", cpf));
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
-    let user = doc.data();
+    user = doc.data();
     console.log(doc.id, " => ", user);
-    id = doc.id;
     fillForms(user, projectName);
   });
-  return id;
+  return user;
 }
 
 function fillForms(user, projectName) {

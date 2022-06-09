@@ -3,7 +3,6 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/
 import { getFirestore } from 'firebase/firestore';
 import { getUser } from './firestore.js';
 
-let currentadmin = null;
 
 const getFirebaseProject = function (client) {
     let projectName = "crebitbot";
@@ -66,6 +65,8 @@ const app = initializeApp(getFirebaseConfig());
 const auth = getAuth(app);
 const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
+let currentadmin = null;
+let currentuser = null;
 
 const signInWithGoogle = async (client, cpf, setAppMode) => {
     try {
@@ -77,9 +78,9 @@ const signInWithGoogle = async (client, cpf, setAppMode) => {
             if (verificaAdmins(currentadmin.email)) {
                 setAppMode('home');
             }
-            let usuarioid = getUser(db, getFirebaseProject(client), cpf);
-            //console.log('userid ' + userid);
-            return usuarioid;
+            currentuser = await getUser(db, getFirebaseProject(client), cpf);
+            //console.log('user ' + currentuser);
+            return currentuser;
         }
     } catch (err) {
         console.error(err);
@@ -90,6 +91,7 @@ const signInWithGoogle = async (client, cpf, setAppMode) => {
 export {
     auth,
     db,
+    currentuser,
     signInWithGoogle,
     //  logout,
     getFirebaseProject

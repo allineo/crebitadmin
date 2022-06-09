@@ -1,3 +1,5 @@
+import { currentuser } from './firebaseauth';
+
 
 let credentials = {
     "urlproxy_backend": "https://api-crebit.apps.binnovation.co"
@@ -62,8 +64,8 @@ export const getIndividuo = async function (cpf) {
 export const sendDocInfo = async function (cpf) {
     var data = JSON.stringify({
         "docs": {
-            "id": document.getElementById('liveonid').innerHTML,
-            "nome": document.getElementById('nomeuser').innerHTML,
+            "id": currentuser['liveon']['individual_id'],
+            "nome": currentuser['nome'],
             "rg": document.getElementById('rg').value,
             "uf": document.getElementById('uf').value,
             "emissao": document.getElementById('emissao').value,
@@ -89,7 +91,7 @@ export const sendDocInfo = async function (cpf) {
 export const approve = async function (cpf) {
     document.getElementById('resposta').innerHTML = 'Aprovando individuo...';
     var data = JSON.stringify({
-        "id": document.getElementById('liveonid').innerHTML,
+        "id": currentuser['liveon']['individual_id'],
         "cpf": cpf
     });
     fetch(credentials['urlproxy_backend'] + "/approveindividuo", getRequestOptions(data))

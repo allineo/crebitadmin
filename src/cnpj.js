@@ -1,4 +1,4 @@
-import { createCNPJ } from './backend/liveoncnpj';
+import { createCNPJ, getCompany } from './backend/liveoncnpj';
 
 
 function CNPJContent(props) {
@@ -37,6 +37,9 @@ function FormCNPJ(props) {
         <button onClick={() => createCNPJ(props.cpf)}>
             Enviar Registo da Empresa
         </button>
+        <br /><br />
+
+        - Step 2 (Registro do Sócio da Empresa) <br /><br />
     </div>);
 }
 
@@ -45,11 +48,17 @@ function LinksPostman(props) {
     const contratosocial = 'https://universal-crater-486876.postman.co/workspace/LiveOn~98ee052e-4a64-48bd-86f9-fb9481ca3998/request/2030980-f412dcf6-fab0-4a0f-85ec-e166c74cde09';
 
     return (<div>
-        - Step 2 - Upload do <a href={contratosocial} target='_blank' rel="noreferrer" >Contrato Social (PDF)</a> <br />
+        - Step 3 - Upload do <a href={contratosocial} target='_blank' rel="noreferrer" >Contrato Social (PDF)</a> <br />
         &nbsp; &nbsp; &nbsp; &nbsp; * Trocar <b>LIVEON ID</b> da URL do POST (/step6/<b>61c383d1ad6ec3005e414804</b>?image_type=)<br />
-        &nbsp; &nbsp; &nbsp; &nbsp; * Aba Params: rg ou cnh / <b>front</b> <br />
-        &nbsp; &nbsp; &nbsp; &nbsp; * Aba Body para upload do arquivo do documento (Select File) <br />
+        &nbsp; &nbsp; &nbsp; &nbsp; * Aba Body para upload do arquivo do documento / form-data file = (Select File) <br />
         &nbsp; &nbsp; &nbsp; &nbsp; * Clicar no botao azul Send
         <br /><br />
+        <button onClick={() => getCompany(props.cpf)}>
+            Mostrar Registo da Empresa
+        </button>
+        <br /><br />
+
+        - Step 4 (Registro do Operador da Empresa) <br /><br />
+        - Step 5 (Validar o codigo do Operador recebido por email) <br /><br />
     </div>);
 }

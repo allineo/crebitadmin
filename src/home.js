@@ -31,7 +31,6 @@ function HomeContent(props) {
 
 export default HomeContent;
 
-
 function OnboardingPanel(props) {
     return (<div>
         <UserData />
@@ -60,7 +59,7 @@ function UserData() {
 }
 
 function Registro(props) {
-    if ((props.props.cpf).length === 14) {
+    if ((props.props.cpf !== null) && (props.props.cpf !== undefined) && (props.props.cpf).length === 14) {
         return (<CNPJContent client={props.props.client} cpf={props.props.cpf} />);
     } else {
         return (<CPFContent client={props.props.client} cpf={props.props.cpf} />);
