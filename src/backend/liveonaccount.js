@@ -18,7 +18,7 @@ exports.getAccountInfo = function (cpf) {
         .then(response => response.json())
         .then(result => {
             //console.log(result);
-            let alias = result['alias_account']; 
+            let alias = result['alias_account'];
             if (alias != null) {
                 alias = result['alias_account']['account_number'];
             }
@@ -32,11 +32,60 @@ exports.getAccountInfo = function (cpf) {
 }
 
 
+exports.getSaldo = function (cpf) {
+    document.getElementById('resposta').innerHTML = 'Buscando Saldo ...';
+    var data = JSON.stringify({
+        "cpf": cpf
+    });
+    var requestOptions = {
+        method: 'POST',
+        headers: {},
+        body: data,
+        redirect: 'follow'
+    };
+    fetch(credentials['urlproxy_backend'] + "/balance", requestOptions)
+        .then(response => response.json())
+        .then(result => {
+            //console.log(result);
+            document.getElementById('resposta').innerHTML =
+                'Saldo da Conta (com centavos) = <b>' + result + '</b>';
+        })
+        .catch(error => {
+            console.log('error', error);
+            document.getElementById('resposta').innerHTML = JSON.stringify(error);
+        });
+}
+
+exports.getExtrato = function (cpf) {
+    document.getElementById('resposta').innerHTML = 'Buscando Extrato ...';
+    var data = JSON.stringify({
+        "cpf": cpf
+    });
+    var requestOptions = {
+        method: 'POST',
+        headers: {},
+        body: data,
+        redirect: 'follow'
+    };
+    fetch(credentials['urlproxy_backend'] + "/statements", requestOptions)
+        .then(response => response.json())
+        .then(result => {
+            //console.log(result);
+            document.getElementById('resposta').innerHTML =
+                'Extrato: <br\>' + result;
+        })
+        .catch(error => {
+            console.log('error', error);
+            document.getElementById('resposta').innerHTML = JSON.stringify(error);
+        });
+}
+
+
 exports.activateCard = function (cpf) {
     document.getElementById('resposta').innerHTML = 'Ativando cartão';
     var data = JSON.stringify({
         "cpf": cpf,
-        "card" : document.getElementById('card').value,
+        "card": document.getElementById('card').value,
     });
     var requestOptions = {
         method: 'POST',

@@ -92,7 +92,7 @@ export const approve = async function (cpf) {
     document.getElementById('resposta').innerHTML = 'Aprovando individuo...';
     var data = JSON.stringify({
         "id": currentuser['liveon']['individual_id'],
-        "cpf": cpf
+        "cpf": currentuser['cpf']
     });
     fetch(credentials['urlproxy_backend'] + "/approveindividuo", getRequestOptions(data))
         .then(response => response.json())

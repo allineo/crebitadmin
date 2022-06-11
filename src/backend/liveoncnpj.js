@@ -62,7 +62,7 @@ export const createCNPJ = async function () {
 
 export const getCompany = async function (cnpj) {
     var data = JSON.stringify({
-        "id": currentuser['id']
+        "id": currentuser['liveon']['individual_id']
     });
     fetch(credentials['urlproxy_backend'] + "/getcompany", getRequestOptions(data))
         .then(response => response.json())
