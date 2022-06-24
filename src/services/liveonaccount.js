@@ -48,7 +48,7 @@ exports.getSaldo = function (cpf) {
         .then(result => {
             //console.log(result);
             document.getElementById('resposta').innerHTML =
-                'Saldo da Conta (com centavos) = <b>' + result + '</b>';
+                'Saldo da Conta = <b>' + result + '</b>';
         })
         .catch(error => {
             console.log('error', error);
@@ -72,7 +72,7 @@ exports.getExtrato = function (cpf) {
         .then(result => {
             //console.log(result);
             document.getElementById('resposta').innerHTML =
-                'Extrato: <br\>' + result;
+                'Extrato: <br>' + result;
         })
         .catch(error => {
             console.log('error', error);

@@ -1,4 +1,4 @@
-import { createCNPJ, getCompany } from './backend/liveoncnpj';
+import { createCNPJ, getCompany } from './services/liveoncnpj';
 
 
 function CNPJContent(props) {
@@ -34,7 +34,7 @@ function FormCNPJ(props) {
         DDD: <input type='text' id='dddempresa' size='5'/> &nbsp;
         Fone: <input type='text' id='phoneempresa' size='20'/> &nbsp;
         <br /><br />
-        <button onClick={() => createCNPJ(props.cpf)}>
+        <button onClick={() => createCNPJ()}>
             Enviar Registo da Empresa
         </button>
         <br /><br />
@@ -60,5 +60,6 @@ function LinksPostman(props) {
 
         - Step 4 (Registro do Operador da Empresa) <br /><br />
         - Step 5 (Validar o codigo do Operador recebido por email) <br /><br />
+        - Step 6 (Receber a senha do Operador recebido por email e TROCÁ-LA) <br /><br />
     </div>);
 }

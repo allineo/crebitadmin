@@ -1,4 +1,4 @@
-import { sendDocInfo } from './backend/liveonIndividual';
+import { sendDocInfo } from './services/liveonIndividual';
 
 
 function DocsContent(props) {

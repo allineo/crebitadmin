@@ -1,6 +1,6 @@
 
 import DocsContent from './docs';
-import { createCPFIndividuo, getIndividuo, approve } from './backend/liveonIndividual';
+import { createCPFIndividuo, getIndividuo, approve } from './services/liveonIndividual';
 
 
 

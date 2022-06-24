@@ -60,7 +60,7 @@ export const createCNPJ = async function () {
 # {"success":false,"code":101,"error_message":"Esse indivíduo já existe","error_data":null} */
 
 
-export const getCompany = async function (cnpj) {
+export const getCompany = async function () {
     var data = JSON.stringify({
         "id": currentuser['liveon']['individual_id']
     });

@@ -1,5 +1,5 @@
 //import { changeAccessIndividuo } from './liveonadministrator';
-import { getAccountInfo, getSaldo, getExtrato } from './backend/liveonaccount';
+import { getAccountInfo, getSaldo, getExtrato } from './services/liveonaccount';
 
 
 function AdminContent(props) {

@@ -1,5 +1,5 @@
 
-import { activateCard, listCards } from './backend/liveonaccount';
+import { activateCard, listCards } from './services/liveonaccount';
 
 function CardContent(props) {
     return (<div>

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { signInWithGoogle } from './backend/firebaseauth';
+import { signInWithGoogle } from './services/firebaseauth';
 import './App.css';
 import HomeContent from './home';
 
